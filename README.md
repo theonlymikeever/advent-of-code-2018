@@ -11,3 +11,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 
 - [Day 1: Chronal Calibration](day1-chronal-calibration/)
 - [Day 2: Inventory Management System](day2-inventory-mgmt-system/)
+- [Day 3: No Matter How You Slice It](day3-no-matter-how-you-slice-it/)
