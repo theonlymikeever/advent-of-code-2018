@@ -9,3 +9,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 
 ### Calendar
 
+- [Day 1: Chronal Calibration](day1-chronal-calibration/)
