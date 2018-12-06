@@ -55,21 +55,33 @@ const tagInputs = input => {
 const taggedList = tagInputs(input);
 const compare = (a, b) => b - a > 0;
 
-const findMostSleepy = taggedList => {
+const createGuardMap = taggedList => {
   const guardMap = {};
-  let mostSleepy = null;
-
   taggedList.forEach(record => {
     let timeAsleep = record.motions.filter(i => i).length;
-    guardMap[record.id] = guardMap[record.id]
-      ? guardMap[record.id] + timeAsleep
-      : timeAsleep;
+    if (guardMap[record.id]) {
+      guardMap[record.id] = {
+        ...guardMap[record.id],
+        motions: [...guardMap[record.id].motions, record.motions],
+        totalTime: guardMap[record.id].totalTime + timeAsleep
+      };
+    } else {
+      // first entry in the map
+      guardMap[record.id] = {
+        totalTime: timeAsleep,
+        motions: [record.motions]
+      };
+    }
   });
+  return guardMap;
+};
 
+const findMostSleepy = guardMap => {
+  let mostSleepy = null;
   let totalSleep = 0;
   for (let guard in guardMap) {
-    if (compare(totalSleep, guardMap[guard])) {
-      totalSleep = guardMap[guard];
+    if (compare(totalSleep, guardMap[guard].totalTime)) {
+      totalSleep = guardMap[guard].totalTime;
       mostSleepy = {
         id: guard,
         totalTime: totalSleep
@@ -91,14 +103,22 @@ const findCommonMinute = (guard, taggedList) => {
         clock[idx] = clock[idx] ? ++clock[idx] : 1;
       }
     });
-  })
+  });
   let maxMin = clock.indexOf(Math.max(...clock));
   return maxMin;
-}
+};
 
-const foundGuard = findMostSleepy(taggedList);
+const guardMap = createGuardMap(taggedList);
+const foundGuard = findMostSleepy(guardMap);
 const foundMinute = findCommonMinute(foundGuard, taggedList);
 
-console.log(foundGuard.id.slice(1) * foundMinute);
+const solution = () => foundGuard.id.slice(1) * foundMinute;
+console.log(solution());
+
+module.exports = {
+  taggedList,
+  solution,
+  guardMap
+};
 
 // console.log(findCommonMinute(foundGuard, taggedList));
