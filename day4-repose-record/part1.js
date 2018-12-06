@@ -93,32 +93,31 @@ const findMostSleepy = guardMap => {
 };
 
 // This could be muchhhhh more efficient
-const findCommonMinute = (guard, taggedList) => {
+const findCommonMinute = ({ motions }) => {
   const clock = Array.from({length: 60}, () => 0);
-  const guardList = taggedList.filter(i => i.id === guard.id);
-  guardList.forEach(record => {
-    let {motions} = record;
-    motions.forEach((minute, idx) => {
+  motions.forEach(minutes => {
+    minutes.forEach((minute, idx) => {
       if (minute > 0) {
         clock[idx] = clock[idx] ? ++clock[idx] : 1;
       }
     });
   });
-  let maxMin = clock.indexOf(Math.max(...clock));
-  return maxMin;
+  const max = Math.max(...clock);
+  let maxIndex = clock.indexOf(max);
+  return { max, maxIndex };
 };
 
 const guardMap = createGuardMap(taggedList);
 const foundGuard = findMostSleepy(guardMap);
-const foundMinute = findCommonMinute(foundGuard, taggedList);
-
-const solution = () => foundGuard.id.slice(1) * foundMinute;
+const foundMinute = findCommonMinute(guardMap[foundGuard.id]);
+const solution = () => foundGuard.id.slice(1) * foundMinute.maxIndex;
 console.log(solution());
 
 module.exports = {
   taggedList,
   solution,
-  guardMap
+  guardMap,
+  findCommonMinute
 };
 
 // console.log(findCommonMinute(foundGuard, taggedList));
