@@ -18,7 +18,6 @@ const compareUnits = (a, b) => {
   return false;
 };
 
-// console.log(data)
 // tests
 // console.log(compareUnits('a', 'b')); // false
 // console.log(compareUnits('a', 'B')); // false
@@ -28,18 +27,14 @@ const compareUnits = (a, b) => {
 // console.log(compareUnits('B', 'a')); // false
 
 const reduction = data => {
-  let reduced = data; // non destructive copy
+  let reduced = data;
   let nextIdx = 1;
-  for (let index = 0; nextIdx <= reduced.length; index++, nextIdx++) {
-    console.log('reducing', index)
+  for (let index = 0; nextIdx < reduced.length; index++, nextIdx++) {
     let current = reduced[index];
     let next = reduced[nextIdx];
-    // console.log('comparing', current, next);
     let polymer = compareUnits(current, next);
 
     if (polymer) {
-      // console.log('firshalf', reduced.slice(0, index))
-      // console.log('secondhalf', reduced.slice(nextIdx+1))
       if (index === 0) {
         reduced = reduced.slice(2);
         index = index = -1;
@@ -51,8 +46,9 @@ const reduction = data => {
       }
     }
   }
-  return reduced.length;
+  return { reduced: reduced.join(''), size: reduced.length };
 };
 
-// console.log(reduction('dabAcCaCBAcCcaDA'.split('')));
-console.log(reduction(data))
+// console.log(reduction('dabAcCaCBAcCcaDA'.split('')).reduced === 'dabCBAcaDA');
+// console.log(reduction('dabAcCaCBAcCcaDA'.split('')).size === 10);
+console.log(reduction(data));
