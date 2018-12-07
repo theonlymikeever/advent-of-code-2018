@@ -36,6 +36,7 @@ const tagInputs = input => {
     const [parsed] = item.match(actionRegex);
     if (parsed === 'asleep') {
       asleep = +min;
+      // tagged[lastIdx]['']
     } else if (parsed === 'wakes') {
       let lastIdx = tagged.length - 1;
       tagged[lastIdx]['motions'] = tagged[lastIdx]['motions'].map(
@@ -93,15 +94,16 @@ const findMostSleepy = guardMap => {
 };
 
 // This could be muchhhhh more efficient
-const findCommonMinute = ({ motions }) => {
+const findMaxMinute = ({ motions }) => {
   const clock = Array.from({length: 60}, () => 0);
   motions.forEach(minutes => {
     minutes.forEach((minute, idx) => {
       if (minute > 0) {
-        clock[idx] = clock[idx] ? ++clock[idx] : 1;
+        clock[idx]++;
       }
     });
   });
+
   const max = Math.max(...clock);
   let maxIndex = clock.indexOf(max);
   return { max, maxIndex };
@@ -109,7 +111,7 @@ const findCommonMinute = ({ motions }) => {
 
 const guardMap = createGuardMap(taggedList);
 const foundGuard = findMostSleepy(guardMap);
-const foundMinute = findCommonMinute(guardMap[foundGuard.id]);
+const foundMinute = findMaxMinute(guardMap[foundGuard.id]);
 const solution = () => foundGuard.id.slice(1) * foundMinute.maxIndex;
 console.log(solution());
 
@@ -117,7 +119,7 @@ module.exports = {
   taggedList,
   solution,
   guardMap,
-  findCommonMinute
+  findMaxMinute
 };
 
 // console.log(findCommonMinute(foundGuard, taggedList));
