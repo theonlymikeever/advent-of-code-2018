@@ -51,4 +51,6 @@ const reduction = data => {
 
 // console.log(reduction('dabAcCaCBAcCcaDA'.split('')).reduced === 'dabCBAcaDA');
 // console.log(reduction('dabAcCaCBAcCcaDA'.split('')).size === 10);
-console.log(reduction(data));
+// console.log(reduction(data));
+
+module.exports = reduction;
