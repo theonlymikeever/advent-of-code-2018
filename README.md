@@ -14,3 +14,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 - [Day 3: No Matter How You Slice It](day3-no-matter-how-you-slice-it/)
 - [Day 4: Repose Record](day4-repose-record/)
 - [Day 5: Alchemical Reduction](day5-alchemical-reduction/)
+- [Day 6: Chronal Coordinates](day6-chronal-coordinates/)
