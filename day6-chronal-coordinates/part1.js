@@ -72,5 +72,11 @@ const largestFiniteArea = areaMap => {
 };
 
 const areaMap = createAreaMap(formattedData);
-module.exports = largestFiniteArea(areaMap);
+
+module.exports = {
+  findMinMaxPoints,
+  distanceBetween,
+  formattedData,
+  areaMap,
+};
 // console.log(largestFiniteArea(areaMap));
