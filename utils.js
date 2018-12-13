@@ -5,6 +5,7 @@ const splitData = (data, delimiter = '\n') => data.split(delimiter);
 
 const readData = (fileName, options = {}) => {
   let data = fs.readFileSync(path.resolve(__dirname, fileName), 'utf8');
+  data = data.trim(); // why these files have whitespace is beyond me
   if (options.split) {
     return splitData(data, options.delimiter);
   }
