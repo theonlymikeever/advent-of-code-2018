@@ -5,7 +5,7 @@
 [Learn more here.](https://adventofcode.com/2018/about)
 
 
-Because I enjoy both challenges and most anything holiday-related, I am excited to participate in this year's AOC. These are my solutions to the advent calendar, in Node.js/JavaScript. 
+Because I enjoy both challenges and most anything holiday-related, I am excited to participate in this year's AOC. Although I will not be competing for speed, I'm thrilled to stretch out the brain, you know? These are my solutions to the advent calendar, in Node.js/JavaScript, and are also written as to practice more functional programming.
 
 ### Calendar
 
@@ -14,3 +14,5 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 - [Day 3: No Matter How You Slice It](day3-no-matter-how-you-slice-it/)
 - [Day 4: Repose Record](day4-repose-record/)
 - [Day 5: Alchemical Reduction](day5-alchemical-reduction/)
+- [Day 6: Chronal Coordinates](day6-chronal-coordinates/)
+- [Day 7: Sum of its Parts](day7-sum-of-its-parts/)
