@@ -23,7 +23,6 @@ const processDepMap = map => {
     stack = Object.values(map)
       .filter(item => !Object.keys(item.deps).length)
       .sort((a, b) => (a.val < b.val ? -1 : 1));
-
     // if stack is empty, we can assume we've finished
     if (!stack[0]) break;
     // otherwise, add val to the answer
