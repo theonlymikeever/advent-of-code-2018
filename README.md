@@ -16,3 +16,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 - [Day 5: Alchemical Reduction](day5-alchemical-reduction/)
 - [Day 6: Chronal Coordinates](day6-chronal-coordinates/)
 - [Day 7: Sum of its Parts](day7-sum-of-its-parts/)
+- [Day 8: Sum of its Parts](day8-memory-maneuver/)
