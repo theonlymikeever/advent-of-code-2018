@@ -57,3 +57,8 @@ const countTotalMeta = (tree, count = 0) => {
 const tree = createNodeTree(data);
 const result = countTotalMeta(tree);
 console.log('total metadata:', result);
+
+module.exports = {
+  tree,
+  createNodeTree
+};
