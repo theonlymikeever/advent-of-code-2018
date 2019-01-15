@@ -94,3 +94,8 @@ const results = playMarbles(playerCount, maxPoints);
 
 console.log(results.scoreMap);
 console.log('highest', findHighestScore(results.scoreMap));
+
+module.exports = {
+  playMarbles,
+  findHighestScore
+};
