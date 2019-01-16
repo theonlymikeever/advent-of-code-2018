@@ -18,3 +18,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 - [Day 7: Sum of its Parts](day7-sum-of-its-parts/)
 - [Day 8: Memory Maneuver](day8-memory-maneuver/)
 - [Day 9: Marble Mania](day9-marble-mania/)
+- [Day 10: The Stars Align](day10-the-stars-align)
