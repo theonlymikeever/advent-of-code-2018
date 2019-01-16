@@ -1,26 +1,14 @@
+/* 
+  create a map of each tick
+  run through the map
+  find grid size
+  search for height change
+  find perfect second
+  build and fill grid
+  flatten and print map
+ */
+
 const {data, testData} = require('./input');
-
-const smallToBig = (a, b) => a - b;
-
-const ticker = (data, seconds = 1) => {
-  const tick = input => {
-    return input.map(({position, velocity}) => {
-      let x = position[0] + velocity[0];
-      let y = position[1] + velocity[1];
-      return {
-        position: [x, y],
-        velocity
-      };
-    });
-  };
-
-  let results = data;
-
-  for (let i = 0; i < seconds; i++) {
-    results = tick(results);
-  }
-  return results;
-};
 
 const findGridSize = input => {
   const positions = {
@@ -53,16 +41,72 @@ const buildGrid = ({minX, maxX, minY, maxY}) => {
   });
 };
 
+const findConstellation = data => {
+  let found = false;
+  let height = Infinity;
+  let second = 0;
+  let tick = data;
+  let previousTick;
+  
+  while (!found) {
+    second++;
+    tick = tick.map(({position, velocity}) => {
+      let x = position[0] += velocity[0];
+      let y = position[1] += velocity[1];
+      return {
+        position: [x, y],
+        velocity
+      };
+    });
+
+    const yPositions = tick.map(({position}) => position[1]);
+    const min = Math.min(...yPositions);
+    const max = Math.max(...yPositions);
+
+    let newHeight = Math.abs(min - max);
+
+    if (newHeight < height) {
+      height = newHeight;
+      // previousTick = tick;
+    } else {      
+      found = true;
+    }
+  }
+
+  // should cache the previous step?
+  tick = tick.map(({position, velocity}) => {
+    let x = position[0] -= velocity[0];
+    let y = position[1] -= velocity[1];
+    return {
+      position: [x, y],
+      velocity
+    };
+  });
+
+  const constellation = {
+    tick,
+    second: second - 1
+  };
+
+  return constellation;
+};
+
+const plotGrid = (points, grid, {minX, minY}) => {
+  points.forEach((star) => {
+    grid[star.position[1] - minY][star.position[0] - minX] = '#';
+  });
+  return grid;
+};
+
 const flatten = grid => grid.map((i) => i.join('')).join('\n');
 
-const size = findGridSize(testData);
-const grid = buildGrid(size);
-const sky = flatten(grid);
+const createConstellation = data => {
+  const instructions = findConstellation(data);
+  const size = findGridSize(instructions.tick);
+  const grid = buildGrid(size);
+  console.log(instructions);
+  const constellation = flatten(plotGrid(instructions.tick, grid, size));
+  return constellation;
+};
 
-/* 
-  // create a map of each tick
-  run through the map and flatten and print map
- */
-
-// const tick = ticker(testData, 3);
-// console.log(tick);
+console.log(createConstellation(data));
