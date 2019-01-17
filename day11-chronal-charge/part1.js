@@ -75,7 +75,7 @@ const processGrid = (grid, maxHeightWidth) => {
 
 const grid = buildGrid(maxHeightWidth);
 const foundSquare = processGrid(grid);
-console.log(foundSquare);
+console.log('Part1:', foundSquare);
 
 module.exports = {
   buildGrid,
