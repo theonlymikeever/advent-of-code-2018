@@ -20,3 +20,4 @@ Because I enjoy both challenges and most anything holiday-related, I am excited 
 - [Day 9: Marble Mania](day9-marble-mania/)
 - [Day 10: The Stars Align](day10-the-stars-align)
 - [Day 11: Chronal Charge](day11-chronal-charge)
+- [Day 12: Subterranean Sustainability](day12-subterranean-sustainability)
