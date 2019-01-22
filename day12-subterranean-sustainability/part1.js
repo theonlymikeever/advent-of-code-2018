@@ -49,13 +49,13 @@ const processGenerations = (state, n) => {
 const countPlants = ({state, offset}) => {
   let total = 0;
   total = state.split('').reduce((a, b, i) => b === '#' ? (i - offset) + a : a, total);
-  console.log('total', total)
+  console.log('total', total);
 };
 
 const paddedState = '.'.repeat(5) + initialState + '.'.repeat(5);
 const lastGen = processGenerations(paddedState, 20);
 // countPlants({state: '.#....##....#####...#######....#.#..##.', offset: 3 })
-countPlants(lastGen);
+// countPlants(lastGen);
 
 module.exports = {
   processGenerations,
