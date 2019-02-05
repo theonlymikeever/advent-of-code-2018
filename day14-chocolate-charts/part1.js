@@ -1,11 +1,12 @@
 const { data, testData } = require('./input');
 
-const numSplit = textArray => ('' + textArray).split('').map(Number);
+// const numSplit = textArray => ('' + textArray).split('').map(Number);
 
 const combineRecipe = (a, b) => {
-  const newRecipe = a + b;
-  const split = numSplit(newRecipe);
-  return split;
+  let newRecipe = a + b;
+  const double = Math.floor(newRecipe / 10);
+  const res = double ? [double, newRecipe % 10] : [newRecipe] ;
+  return res;
 };
 
 const modularShift = (list, p1, p2) => {
