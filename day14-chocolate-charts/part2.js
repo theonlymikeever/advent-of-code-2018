@@ -49,4 +49,4 @@ const findRecipeCount = pattern => {
 // Solution
 const sequence = data.toString();
 const result = findRecipeCount(sequence);
-console.log('Result!', result);
+console.log('Part 2 Solution:', result);
